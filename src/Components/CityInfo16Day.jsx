@@ -17,7 +17,6 @@ const CityInfo16Day = () => {
   const URL = "https://api.openweathermap.org/data/2.5/forecast";
   const KEY = "75dfcefb0ec7e12eb409c4b83502161d";
 
-  // Funzione per fare la richiesta
   const getForecast = async () => {
     if (!searchCity) return;
 
