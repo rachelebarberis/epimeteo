@@ -7,11 +7,7 @@ import {
   Button,
   Card,
   Alert,
-  Nav,
-  Navbar,
 } from "react-bootstrap";
-import ImgHeader from "./ImgHeader";
-import { Link } from "react-router-dom";
 
 const CityInfo16Day = () => {
   const [searchCity, setSearchCity] = useState("");
@@ -43,36 +39,6 @@ const CityInfo16Day = () => {
 
   return (
     <>
-      <Navbar
-        bg="primary"
-        variant="primary"
-        expand="lg"
-        style={{ backgroundColor: "white" }}
-      >
-        <Container fluid={true} className="mt-0">
-          <Navbar.Brand href="#">
-            <img
-              src="./public/images/sun.jpeg"
-              alt="Logo"
-              style={{ width: "70px", height: "70px" }}
-            />
-          </Navbar.Brand>
-
-          <Navbar.Toggle aria-controls="navbar-nav" className="text-white" />
-
-          <Navbar.Collapse id="navbar-nav">
-            <Nav className="me-auto">
-              <Link to="/" className="nav-link fw-bold text-white">
-                Oggi
-              </Link>
-              <Link to="/16gg" className="nav-link fw-bold text-white">
-                Prossimamente
-              </Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <ImgHeader />
       <Container className="mt-4">
         <Row className="justify-content-center">
           <Col xs={12} sm={8} md={6}>
