@@ -8,18 +8,18 @@ const CityInfoDay = ({ cityInfo }) => {
   return (
     <Container className="mt-4">
       <Row className="justify-content-center">
-        <Col xs={12} sm={8} md={10}>
+        <Col xs={12} sm={8} md={10} className="mb-2">
           <Card className="shadow-lg" style={{ borderRadius: "10px" }}>
             <Row>
               <Col md={6}>
-                <Card.Title className="text-center">
+                <Card.Title className="text-center pt-2">
                   <h3>{cityInfo.name}</h3>
                 </Card.Title>
               </Col>
               <Col md={6}></Col>
             </Row>
             <Row>
-              <Col md={6}>
+              <Col md={6} className="text-center">
                 <img
                   src={`http://openweathermap.org/img/wn/${cityInfo.weather[0].icon}.png`}
                   alt={cityInfo.weather[0].description}

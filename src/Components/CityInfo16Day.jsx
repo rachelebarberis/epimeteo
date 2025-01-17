@@ -60,49 +60,60 @@ const CityInfo16Day = () => {
                   </Button>
                 </Form.Group>
 
-                {/* Mostra messaggio di errore se la città non viene trovata */}
                 {error && <Alert variant="danger">{error}</Alert>}
 
-                {/* Mostra le previsioni meteo se ci sono */}
                 {forecastInfo && (
                   <>
-                    <h4>
+                    <h4 className="text-center">
                       {forecastInfo.city.name}, {forecastInfo.city.country}
                     </h4>
-                    <h5>Previsioni per i prossimi 15 giorni:</h5>
-                    <Container fluid={true}>
-                      {forecastInfo.list.map((forecast, index) => (
-                        <Col key={index}>
-                          <Card className="mt-2">
-                            <Card.Body>
-                              <Card.Title>
-                                {new Date(forecast.dt * 1000).toLocaleString()}
-                              </Card.Title>
-                              <Card.Text>
-                                <strong>Temperatura:</strong>{" "}
-                                {forecast.main.temp}
-                                °C <br />
-                                <strong>Condizioni:</strong>{" "}
-                                {forecast.weather[0].description} <br />
-                                <strong>Vento:</strong> {forecast.wind.speed}{" "}
-                                km/h
-                                <img
-                                  src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
-                                  alt={forecast.weather[0].description}
-                                  style={{ width: "50px", height: "50px" }}
-                                />
-                              </Card.Text>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                      ))}
-                    </Container>
+                    <h5 className="text-center">
+                      Previsioni per i prossimi giorni:
+                    </h5>
                   </>
                 )}
               </Card.Body>
             </Card>
           </Col>
         </Row>
+
+        {forecastInfo && (
+          <Container fluid className="mt-4">
+            <Row className="g-4">
+              {forecastInfo.list.map((forecast, index) => (
+                <Col key={index} xs={12} sm={6} md={4} lg={3}>
+                  <Card className="h-100">
+                    <Card.Body>
+                      <Card.Title className="text-center">
+                        {new Date(forecast.dt * 1000).toLocaleString("it-IT", {
+                          weekday: "long",
+                          day: "numeric",
+                          month: "short",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </Card.Title>
+                      <Card.Text className="text-center">
+                        <strong>Temperatura:</strong> {forecast.main.temp}°C
+                        <br />
+                        <strong>Condizioni:</strong>{" "}
+                        {forecast.weather[0].description} <br />
+                        <strong>Vento:</strong> {forecast.wind.speed} km/h
+                      </Card.Text>
+                      <div className="text-center">
+                        <img
+                          src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                          alt={forecast.weather[0].description}
+                          style={{ width: "50px", height: "50px" }}
+                        />
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        )}
       </Container>
     </>
   );
