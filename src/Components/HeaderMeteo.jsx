@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Container, Nav, Navbar, Form, Button } from "react-bootstrap";
 import CityInfoDay from "../Components/CityInfoDay";
+import ImgHeader from "./ImgHeader";
+import { Link } from "react-router-dom";
 
 const HeaderMeteo = () => {
   const [searchCity, setSearchCity] = useState("");
@@ -22,7 +24,6 @@ const HeaderMeteo = () => {
       setCityInfo(data);
     } catch (error) {
       setCityInfo(null);
-
       console.log(error);
     }
   };
@@ -48,16 +49,12 @@ const HeaderMeteo = () => {
 
           <Navbar.Collapse id="navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#" className="fw-bold text-white">
-                Meteo
-              </Nav.Link>
-
-              <Nav.Link href="#" className="fw-bold text-white">
-                Giornaliero
-              </Nav.Link>
-              <Nav.Link href="#" className="fw-bold text-white">
-                16GG
-              </Nav.Link>
+              <Link to="/" className="nav-link fw-bold text-white">
+                Oggi
+              </Link>
+              <Link to="/16gg" className="nav-link fw-bold text-white">
+                Prossimamente
+              </Link>
             </Nav>
 
             <Form.Group className="d-flex">
@@ -76,24 +73,7 @@ const HeaderMeteo = () => {
         </Container>
       </Navbar>
 
-      <div
-        style={{
-          width: "100%",
-          height: "200px",
-          overflow: "hidden",
-        }}
-      >
-        <img
-          src="./public/images/headerimg.jpg"
-          alt="mondo"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "top",
-          }}
-        />
-      </div>
+      <ImgHeader />
       <CityInfoDay cityInfo={cityInfo} />
     </>
   );

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Container, Row, Col, Card } from "react-bootstrap";
-const CityWeatherDisplay = ({ cityInfo }) => {
+const CityInfoDay = ({ cityInfo }) => {
   if (!cityInfo) {
     return null;
   }
@@ -12,7 +12,6 @@ const CityWeatherDisplay = ({ cityInfo }) => {
           <Card className="shadow-lg" style={{ borderRadius: "10px" }}>
             <Row>
               <Col md={6}>
-                {" "}
                 <Card.Title className="text-center">
                   <h3>{cityInfo.name}</h3>
                 </Card.Title>
@@ -21,13 +20,12 @@ const CityWeatherDisplay = ({ cityInfo }) => {
             </Row>
             <Row>
               <Col md={6}>
-                {" "}
                 <img
                   src={`http://openweathermap.org/img/wn/${cityInfo.weather[0].icon}.png`}
                   alt={cityInfo.weather[0].description}
                   style={{ width: "50px", height: "50px" }}
                 />
-                <p>{cityInfo.weather[0].description}</p>{" "}
+                <p>{cityInfo.weather[0].description}</p>
               </Col>
 
               <Col md={6}>
@@ -47,4 +45,4 @@ const CityWeatherDisplay = ({ cityInfo }) => {
   );
 };
 
-export default CityWeatherDisplay;
+export default CityInfoDay;
